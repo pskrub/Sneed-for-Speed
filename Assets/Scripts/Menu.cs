@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
     }
 
     public void OnClickQuitButton() {
-        Debug.Log("swag");
+        // Debug.Log("swag");
         Application.Quit();
     }   
 
