@@ -2,16 +2,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum AttackButton
+{
+    LeftPunch,
+    RightPunch,
+    LeftKick,
+    RightKick
+}
+
 [CreateAssetMenu(fileName = "MotionDef", menuName = "Snail/Motion")]
 public class MotionDef : ScriptableObject
 {
-    public enum AttackButton
-    {
-        LeftPunch,
-        RightPunch,
-        LeftKick,
-        RightKick
-    }
+
 
     public string displayName;
     public int[] sequence;
