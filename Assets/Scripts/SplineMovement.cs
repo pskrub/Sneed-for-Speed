@@ -3,10 +3,10 @@ using UnityEngine.Splines;
 
 public class SplineMovement : MonoBehaviour
 {
-    public static SplineContainer activeSpline;
+    public SplineContainer activeSpline;
     public float speed = 1f;
-    public static float progress;
-    public static float splineLength;
+    public float progress;
+    public float splineLength;
     
     private Vector3 currentPosition;
     private Vector3 nextPosition;

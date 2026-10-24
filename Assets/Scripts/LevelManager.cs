@@ -5,10 +5,12 @@ using Random = Unity.Mathematics.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    private SplineMovement player;
+    public SplineMovement player;
+    public SplineMovement chaser;
     public GameObject[] trackPrefabs;
     private int maxIndex;
-    private int index;
+    private int playerIndex;
+    private int chaserIndex;
     private GameObject activeTrack;
     private SplineContainer spline;
     private Vector3 splineEnd;
@@ -19,23 +21,32 @@ public class LevelManager : MonoBehaviour
     {
         maxIndex = trackPrefabs.Length;
         SpawnTrack(0, new Vector3(0, 0, 0));
-        SplineMovement.activeSpline = tracks[0].GetComponent<SplineContainer>();
-        SplineMovement.splineLength = SplineMovement.activeSpline.CalculateLength();
+        player.activeSpline = tracks[0].GetComponent<SplineContainer>();
+        player.splineLength = player.activeSpline.CalculateLength();
+        
+        chaser.activeSpline = tracks[0].GetComponent<SplineContainer>();
+        chaser.splineLength = chaser.activeSpline.CalculateLength();
         
         SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
-        Debug.Log(tracks[0]);
-        
-        SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
-        Debug.Log(tracks[1]);
     }
 
     void Update()
     {
-        if (SplineMovement.progress >= 1f)
+        if (player.progress >= 1f)
         {
-            index++;
-            SplineMovement.activeSpline = tracks[index].GetComponent<SplineContainer>();
-            SplineMovement.progress = 0f;
+            playerIndex++;
+            player.activeSpline = tracks[playerIndex].GetComponent<SplineContainer>();
+            player.splineLength = player.activeSpline.CalculateLength();
+            player.progress = 0f;
+            SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
+        }
+        
+        if (chaser.progress >= 1f)
+        {
+            chaserIndex++;
+            chaser.activeSpline = tracks[chaserIndex].GetComponent<SplineContainer>();
+            chaser.splineLength = chaser.activeSpline.CalculateLength();
+            chaser.progress = 0f;
             SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
         }
     }
@@ -44,7 +55,6 @@ public class LevelManager : MonoBehaviour
     {
         spline = obj.GetComponent<SplineContainer>();
         splineEnd = spline.EvaluatePosition(1);
-        Debug.Log(splineEnd);
         return splineEnd;
     }
 
