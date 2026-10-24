@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class SplineMovment : MonoBehaviour
+public class SplineMovement : MonoBehaviour
 {
-    public SplineContainer spline;
+    public static SplineContainer activeSpline;
     public float speed = 1f;
-    private float progress;
-    private float splineLength;
+    public static float progress;
+    public static float splineLength;
     
     private Vector3 currentPosition;
     private Vector3 nextPosition;
@@ -14,22 +14,17 @@ public class SplineMovment : MonoBehaviour
     private Vector3 upwards;
     void Start()
     {
-        splineLength = spline.CalculateLength();
+        // splineLength = activeSpline.CalculateLength();
     }
 
     void Update()
     {
         progress += speed * Time.deltaTime / splineLength;
         
-        currentPosition = spline.EvaluatePosition(progress);
+        currentPosition = activeSpline.EvaluatePosition(progress);
         transform.position = currentPosition;
 
-        if (progress > 1f)
-        {
-            progress = 0f;
-        }
-        
-        nextPosition = spline.EvaluatePosition(progress + 0.05f);
+        nextPosition = activeSpline.EvaluatePosition(progress + 0.05f);
         direction = nextPosition - currentPosition;
         if (direction.x >= 0)
         {
