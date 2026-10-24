@@ -11,6 +11,7 @@ public class SplineMovment : MonoBehaviour
     private Vector3 currentPosition;
     private Vector3 nextPosition;
     private Vector3 direction;
+    private Vector3 upwards;
     void Start()
     {
         splineLength = spline.CalculateLength();
@@ -30,6 +31,14 @@ public class SplineMovment : MonoBehaviour
         
         nextPosition = spline.EvaluatePosition(progress + 0.05f);
         direction = nextPosition - currentPosition;
-        transform.rotation = Quaternion.LookRotation(direction);
+        if (direction.x >= 0)
+        {
+            upwards = Vector3.up;
+        }
+        else
+        {
+            upwards = -Vector3.up;
+        }
+        transform.rotation = Quaternion.LookRotation(direction, upwards);
     }
 }
