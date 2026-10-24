@@ -9,8 +9,8 @@ public class LevelManager : MonoBehaviour
     public SplineMovement chaser;
     public GameObject[] trackPrefabs;
     private int maxIndex;
-    private int playerIndex;
-    private int chaserIndex;
+    public int playerIndex;
+    public int chaserIndex;
     private GameObject activeTrack;
     private SplineContainer spline;
     private Vector3 splineEnd;

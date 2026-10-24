@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf9f3a2b62ab7047b067da0163cd5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snail: {fileID: 1473630416}
+  snail: {fileID: 1473630418}
   width: 7
   height: 7
   tileSize: 20
@@ -1059,6 +1059,8 @@ MonoBehaviour:
   - {fileID: 5754399722196860817, guid: 6aa72092142d3f24c89c0f501f8121d8, type: 3}
   - {fileID: 2546048422317103331, guid: fb998d686dac5c74c9384dd5f72d9f39, type: 3}
   - {fileID: 6731586718922786282, guid: 58e35bffb5afd1c40ac302272db86cb5, type: 3}
+  playerIndex: 0
+  chaserIndex: 0
 --- !u!4 &1171815806
 Transform:
   m_ObjectHideFlags: 0
@@ -1483,6 +1485,7 @@ GameObject:
   - component: {fileID: 1473630414}
   - component: {fileID: 1473630416}
   - component: {fileID: 1473630417}
+  - component: {fileID: 1473630418}
   m_Layer: 0
   m_Name: Snail1
   m_TagString: Untagged
@@ -1559,6 +1562,23 @@ MonoBehaviour:
   speed: 5
   progress: 0.3
   splineLength: 0
+--- !u!114 &1473630418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473630412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9baf887c115b30408d74a6e3bc00256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1473630417}
+  startSpeed: 2
+  minSpeed: 0
+  maxSpeed: 12
+  decayPerSecond: 0.35
 --- !u!1 &1575024811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1786,7 @@ GameObject:
   - component: {fileID: 1672564402}
   - component: {fileID: 1672564404}
   - component: {fileID: 1672564405}
+  - component: {fileID: 1672564406}
   m_Layer: 0
   m_Name: Chaser
   m_TagString: Untagged
@@ -1843,6 +1864,26 @@ MonoBehaviour:
   speed: 1
   progress: 0
   splineLength: 0
+--- !u!114 &1672564406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672564401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf9994467043204695e9644b7287fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snail: {fileID: 1473630418}
+  snailSpline: {fileID: 1473630417}
+  chaserSpline: {fileID: 1672564405}
+  levelManager: {fileID: 1171815805}
+  startSpeed: 1.5
+  acceleration: 0.04
+  catchDistance: 0.1
+  maxGap: 0.5
 --- !u!1 &1818832820
 GameObject:
   m_ObjectHideFlags: 0

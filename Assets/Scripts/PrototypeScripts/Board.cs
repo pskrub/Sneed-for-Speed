@@ -21,7 +21,7 @@ public class Board : MonoBehaviour
         public bool spreads;
     }
 
-    public SnailController snail;
+    public SnailSpeedCalc snail;
 
     [Header("Grid")]
     public int width = 7;
