@@ -15,10 +15,6 @@ public class CameraFollow : MonoBehaviour
         Vector3 p = transform.position;
         float wantedX = target.position.x + xOffset;
         p.x = Mathf.Lerp(p.x, wantedX, smoothing * Time.deltaTime);
-        
-        float wantedY = target.position.y;
-        p.y = Mathf.Lerp(p.y, wantedY, smoothing * Time.deltaTime);
-        
         transform.position = p;
     }
 }

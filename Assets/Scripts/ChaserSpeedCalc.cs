@@ -24,16 +24,16 @@ public class ChaserSpeedCalc : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Gap);
+        // Debug.Log(Gap); // CHANGED: commented out, it logged every frame
         if (snail == null || snail.IsDead) return;
-        
+
         chaserSpline.speed += acceleration * Time.deltaTime;
-        
+
         // Rubber band: don't let the player escape forever.
         if (Gap > maxGap)
         {
-            Debug.Log("max gap exceeded");
-            if ( snailSpline.progress < maxGap)
+            // Debug.Log("max gap exceeded"); // CHANGED: commented out, it logged every frame
+            if (snailSpline.progress < maxGap)
             {
                 chaserSpline.progress = snailSpline.progress - maxGap;
             }
@@ -42,11 +42,12 @@ public class ChaserSpeedCalc : MonoBehaviour
                 chaserSpline.progress += 0.1f;
             }
         }
-        
+
         if (Gap <= catchDistance)
         {
             Debug.Log("snail died at: " + Gap);
             snail.Die();
+            chaserSpline.speed = 0f; // NEW: the chaser stops when it has caught the snail
         }
     }
 }

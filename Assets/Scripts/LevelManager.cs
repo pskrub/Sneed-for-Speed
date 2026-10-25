@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     private GameObject activeTrack;
     private SplineContainer spline;
     private Vector3 splineEnd;
-    
+
     private List<GameObject> tracks = new List<GameObject>();
     private GameObject track;
     void Start()
@@ -23,10 +23,10 @@ public class LevelManager : MonoBehaviour
         SpawnTrack(0, new Vector3(0, 0, 0));
         player.activeSpline = tracks[0].GetComponent<SplineContainer>();
         player.splineLength = player.activeSpline.CalculateLength();
-        
+
         chaser.activeSpline = tracks[0].GetComponent<SplineContainer>();
         chaser.splineLength = chaser.activeSpline.CalculateLength();
-        
+
         SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
     }
 
@@ -40,14 +40,15 @@ public class LevelManager : MonoBehaviour
             player.progress = 0f;
             SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
         }
-        
+
         if (chaser.progress >= 1f)
         {
             chaserIndex++;
             chaser.activeSpline = tracks[chaserIndex].GetComponent<SplineContainer>();
             chaser.splineLength = chaser.activeSpline.CalculateLength();
             chaser.progress = 0f;
-            SpawnTrack(UnityEngine.Random.Range(0, maxIndex), splineEnd);
+            // CHANGED: removed SpawnTrack here. The player already spawns a new piece each time
+            // it moves on, so the chaser spawning one too doubled the number of tracks.
         }
     }
 

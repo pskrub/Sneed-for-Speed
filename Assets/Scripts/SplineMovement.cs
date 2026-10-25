@@ -7,7 +7,8 @@ public class SplineMovement : MonoBehaviour
     public float speed = 1f;
     public float progress;
     public float splineLength;
-    
+    public float distance; // NEW: total distance travelled, used by GameHUD for the score
+
     private Vector3 currentPosition;
     private Vector3 nextPosition;
     private Vector3 direction;
@@ -20,11 +21,15 @@ public class SplineMovement : MonoBehaviour
     void Update()
     {
         progress += speed * Time.deltaTime / splineLength;
-        
-        currentPosition = activeSpline.EvaluatePosition(progress);
+        distance += speed * Time.deltaTime; // NEW: count total distance
+
+        // CHANGED: Mathf.Clamp01(progress) instead of progress. A negative progress (the chaser starting
+        // behind the track) made the spline continue backwards into the ground. Now it waits at the start.
+        currentPosition = activeSpline.EvaluatePosition(Mathf.Clamp01(progress));
         transform.position = currentPosition;
 
-        nextPosition = activeSpline.EvaluatePosition(progress + 0.05f);
+        // CHANGED: same clamp here
+        nextPosition = activeSpline.EvaluatePosition(Mathf.Clamp01(progress + 0.05f));
         direction = nextPosition - currentPosition;
         if (direction.x >= 0)
         {
@@ -34,6 +39,11 @@ public class SplineMovement : MonoBehaviour
         {
             upwards = -Vector3.up;
         }
-        transform.rotation = Quaternion.LookRotation(direction, upwards);
+        // CHANGED: only rotate when direction isn't zero (at the very end of a piece it can be,
+        // which spams "Look rotation viewing vector is zero" in the Console)
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction, upwards);
+        }
     }
 }

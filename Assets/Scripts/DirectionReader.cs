@@ -52,7 +52,7 @@ public class DirectionReader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Reader running");
+        // Debug.Log("Reader running"); // CHANGED: commented out, it logged every frame
         // Bare noget keyboard check halløj
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
@@ -71,7 +71,7 @@ public class DirectionReader : MonoBehaviour
         CurrentDirection = 5 + x + 3 * y;
 
         // Bruger en struct (en bundled datatype som ses øverst i script), der holder styr på historien af inputs.
-        Debug.Log(CurrentDirection);
+        // Debug.Log(CurrentDirection); // CHANGED: commented out, it logged every frame
         if (CurrentDirection != lastDirection)
         {
             history.Add(new DirectionEntry(CurrentDirection, Time.time));
@@ -92,15 +92,15 @@ public class DirectionReader : MonoBehaviour
         UpdateDebugText();
     }
 
-        void PressButton(AttackButton button)
-        {
-            LastButton = button;
-            LastButtonTime = Time.time;
-            ButtonPressed?.Invoke(button); // "?." = only if someone is listening
-        }
+    void PressButton(AttackButton button)
+    {
+        LastButton = button;
+        LastButtonTime = Time.time;
+        ButtonPressed?.Invoke(button); // "?." = only if someone is listening
+    }
 
-        // Clear history kaldes efter hver gang man har lavet en motion så inputtet ikke bliver lavet to gange.
-        public void ClearHistory()
+    // Clear history kaldes efter hver gang man har lavet en motion så inputtet ikke bliver lavet to gange.
+    public void ClearHistory()
     {
         history.Clear();
 
@@ -119,6 +119,3 @@ public class DirectionReader : MonoBehaviour
         debugText.text = $"Now: {CurrentDirection}\nHistory: {historyLine}\nButton: {buttonLine}";
     }
 }
-
-
-

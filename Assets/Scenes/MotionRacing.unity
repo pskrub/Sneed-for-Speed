@@ -119,94 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &19672035
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 19672036}
-  - component: {fileID: 19672037}
-  m_Layer: 5
-  m_Name: Board
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &19672036
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19672035}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1038082461}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
---- !u!114 &19672037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19672035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf9f3a2b62ab7047b067da0163cd5e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snail: {fileID: 0}
-  width: 7
-  height: 7
-  tileSize: 20
-  spacing: 8
-  kinds:
-  - name: Strawberry
-    color: {r: 0.9, g: 0.2, b: 0.25, a: 1}
-    sprite: {fileID: 0}
-    speedChange: 1.5
-    spawnWeight: 1
-    spreads: 0
-  - name: Leaf
-    color: {r: 0.3, g: 0.75, b: 0.3, a: 1}
-    sprite: {fileID: 0}
-    speedChange: 0.8
-    spawnWeight: 1.2
-    spreads: 0
-  - name: Dewdrop
-    color: {r: 0.3, g: 0.6, b: 1, a: 1}
-    sprite: {fileID: 0}
-    speedChange: 0.8
-    spawnWeight: 1.2
-    spreads: 0
-  - name: Mushroom
-    color: {r: 0.65, g: 0.45, b: 0.3, a: 1}
-    sprite: {fileID: 0}
-    speedChange: 0.8
-    spawnWeight: 1.2
-    spreads: 0
-  - name: Salt
-    color: {r: 0.92, g: 0.92, b: 0.92, a: 1}
-    sprite: {fileID: 0}
-    speedChange: -2
-    spawnWeight: 0.6
-    spreads: 1
-  popTime: 0.15
-  growTime: 0.12
-  chainBonus: 0.25
-  spreadInterval: 6
 --- !u!1001 &301774631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -903,7 +815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1038082458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +848,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -979,12 +891,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 19672036}
   - {fileID: 2133737064}
   - {fileID: 1818832823}
   - {fileID: 1468773306}
   - {fileID: 1262758735}
   - {fileID: 979380030}
+  - {fileID: 1409532567}
+  - {fileID: 1683376383}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1215,6 +1128,70 @@ Transform:
   - {fileID: 1291198779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1409532566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1409532567}
+  - component: {fileID: 1409532568}
+  m_Layer: 5
+  m_Name: PromptUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1409532567
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409532566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1038082461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1409532568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409532566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21fe81e89a5a9441807b8d73843a5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompts: {fileID: 1866325913}
+  areaHeight: 0.4
+  iconSize: 110
+  iconSpacing: 18
+  timerWidth: 900
+  backgroundColor: {r: 0.08, g: 0.08, b: 0.12, a: 0.92}
+  arrowColor: {r: 1, g: 1, b: 1, a: 1}
+  buttonColors:
+  - {r: 1, g: 0.85, b: 0.2, a: 1}
+  - {r: 1, g: 0.55, b: 0.15, a: 1}
+  - {r: 0.3, g: 0.65, b: 1, a: 1}
+  - {r: 0.35, g: 0.9, b: 0.45, a: 1}
+  dimDotColor: {r: 1, g: 1, b: 1, a: 0.15}
+  hitColor: {r: 0.35, g: 1, b: 0.45, a: 1}
+  missColor: {r: 1, g: 0.35, b: 0.3, a: 1}
+  showKeyHints: 1
 --- !u!1001 &1422281314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1759,6 +1736,61 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1683376382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1683376383}
+  - component: {fileID: 1683376384}
+  m_Layer: 5
+  m_Name: HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1683376383
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683376382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1038082461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1683376384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683376382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b009554551df94d832320ba58d74cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snail: {fileID: 0}
+  snailSpline: {fileID: 0}
+  chaser: {fileID: 0}
+  useCountdown: 1
+  countdownStep: 0.8
+  promptAreaHeight: 0.4
+  dangerGap: 0.25
 --- !u!1 &1818832820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,14 +2141,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd90e4f4fb6555438b18f7d379fe2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snail: {fileID: 1473630416}
+  snail: {fileID: 0}
   reader: {fileID: 1866325912}
   recognizer: {fileID: 1866325914}
   motions: []
   missPenalty: -1.5
   timeoutPenalty: -1
   debugText: {fileID: 0}
+  timer: 0
+  promptTime: 0
   lastResult: 
+  currentPrompt: {fileID: 0}
+  state: 0
+  levelPerSecond: 0.1
+  startPromptTime: 3
+  promptTimePerLevel: 0.2
+  minPromptTime: 0.8
+  level: 0
+  streak: 0
 --- !u!114 &1866325914
 MonoBehaviour:
   m_ObjectHideFlags: 0
